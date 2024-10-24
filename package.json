@@ -3,6 +3,7 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
+		"start": "node build",
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
@@ -15,7 +16,9 @@
 		"lint": "prettier --check ."
 	},
 	"devDependencies": {
+		"@flydotio/dockerfile": "^0.5.9",
 		"@sveltejs/adapter-auto": "^3.0.0",
+		"@sveltejs/adapter-node": "^5.2.8",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^4.0.0",
 		"@tailwindcss/aspect-ratio": "^0.4.2",
@@ -24,7 +27,6 @@
 		"@tailwindcss/typography": "^0.5.15",
 		"@types/better-sqlite3": "^7.6.11",
 		"autoprefixer": "^10.4.20",
-		"drizzle-kit": "^0.22.0",
 		"mdsvex": "^0.11.2",
 		"prettier": "^3.3.2",
 		"prettier-plugin-svelte": "^3.2.6",
@@ -39,6 +41,7 @@
 		"@oslojs/crypto": "^1.0.1",
 		"@oslojs/encoding": "^1.1.0",
 		"better-sqlite3": "^11.1.2",
-		"drizzle-orm": "^0.33.0"
+		"drizzle-kit": "^0.26.2",
+		"drizzle-orm": "^0.35.3"
 	}
 }

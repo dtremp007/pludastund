@@ -16,9 +16,6 @@ export const actions = {
 		const name = formData.get('name') as string;
 		const colors = formData.get('colors') as string;
 
-        console.log('name:', name);
-        console.log('colors:', colors);
-
 		await db.insert(logoVariations).values({
 			name,
 			colors,

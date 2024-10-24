@@ -4,17 +4,16 @@
 	import { enhance } from '$app/forms';
 
 	let colors = $state({
-		puddle: 'rgb(75,26,0)',
-		cupPrimary: 'rgb(137,52,5)',
-		cupSecondary: 'rgb(97,37,3)',
-		smallPuddle: 'rgb(97,50,0)',
+		puddle: 'rgb(71,36,0)',
+		cupPrimary: 'rgb(201,152,98)',
+		cupSecondary: 'rgb(107,56,0)',
 		shadow: 'rgb(0,0,0)',
-		smallPuddleDetail: 'rgb(66,34,0)',
-		cupInnerShadow: 'rgb(140,140,140)',
+        cupInside: 'rgb(201,152,98)',
+		cupInnerShadow: 'rgb(107,56,0)',
 		foreground: 'rgb(255,255,255)',
-		puddleOutline: 'rgb(75,26,0)',
+		puddleOutline: 'rgb(0,0,0)',
 		textColor: 'rgb(255,255,255)',
-		cupRim: 'rgb(137,52,5)'
+		cupRim: 'rgb(233,192,146)'
 	});
 
 	let variationName = $state('');
