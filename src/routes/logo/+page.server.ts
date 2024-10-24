@@ -29,5 +29,11 @@ export const actions = {
         await db.update(logoVariations)
             .set({ likes: sql`${logoVariations.likes} + 1` })
             .where(eq(logoVariations.id, +id));
+    },
+    delete: async ({ request }) => {
+        const formData = await request.formData();
+        const id = formData.get('id') as string;
+
+        await db.delete(logoVariations).where(eq(logoVariations.id, +id));
     }
 } satisfies Actions;

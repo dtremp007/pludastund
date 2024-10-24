@@ -12,6 +12,8 @@ WORKDIR /app
 # Set production environment
 ENV NODE_ENV="production"
 
+RUN apt-get update && apt-get install -y fuse3 openssl sqlite3 ca-certificates
+
 # Install pnpm
 ARG PNPM_VERSION=8.15.4
 RUN npm install -g pnpm@$PNPM_VERSION
@@ -31,8 +33,6 @@ RUN pnpm install --frozen-lockfile --prod=false
 # Copy application code
 COPY . .
 
-RUN mkdir -p /data
-
 # Build application
 RUN DATABASE_URL=":memory:" pnpm run build
 
@@ -49,16 +49,19 @@ COPY --from=build /app/package.json /app
 COPY --from=build /app/drizzle.config.ts /app
 COPY --from=build /app/drizzle /app/drizzle
 COPY --from=build /app/deploy.sh /app
+# Copy the schema file and its directory structure
+COPY --from=build /app/src/lib/server/db /app/src/lib/server/db
 
 RUN mkdir -p /app/data
 
 # Fix permissions on the copied database
 RUN chmod +x /app/deploy.sh
 
-# Create volume after setting up permissions
-VOLUME /app/data
+VOLUME data
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
-ENV DATABASE_URL=":memory:"
+# ENV DATABASE_URL="file:/app/data/sqlite.db"
+ENV DATABASE_URL="/app/data/sqlite.db"
+
 CMD ["/app/deploy.sh"]
